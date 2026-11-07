@@ -103,7 +103,7 @@ export default function AdminLoginPage() {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 className="w-full border border-slate-200/80 rounded-xl p-3.5 font-body-sm text-slate-800 focus:outline-none focus:ring-4 focus:ring-[#016e1c]/10 focus:border-[#016e1c] transition-all bg-slate-50/50 hover:bg-slate-50/80 focus:bg-white placeholder-slate-400"
-                placeholder="indiaops@ozclu.com"
+                placeholder="indiaops@clusoinfolink.com"
               />
             </div>
 
@@ -167,7 +167,7 @@ export default function AdminLoginPage() {
 
       {/* Footer */}
       <footer className="h-14 bg-white/20 backdrop-blur-sm border-t border-[#016e1c]/10 flex justify-center items-center font-body-sm text-[#5e7285] text-xs font-medium">
-        <span>&copy; {new Date().getFullYear()} Ozclu. All Rights Reserved.</span>
+        <span>&copy; {new Date().getFullYear()} Cluso Infolink. All Rights Reserved.</span>
       </footer>
     </div>
   );

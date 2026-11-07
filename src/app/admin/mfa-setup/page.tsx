@@ -104,12 +104,12 @@ export default function MfaSetupPage() {
   };
 
   const handleDownloadCodes = () => {
-    const text = `Ozclu Admin MFA Recovery Codes\nGenerated: ${new Date().toLocaleString()}\n\n${recoveryCodes.join("\n")}\n\nKeep these codes safe. They are single-use alternatives to your authenticator app.`;
+    const text = `Cluso Infolink Admin MFA Recovery Codes\nGenerated: ${new Date().toLocaleString()}\n\n${recoveryCodes.join("\n")}\n\nKeep these codes safe. They are single-use alternatives to your authenticator app.`;
     const blob = new Blob([text], { type: "text/plain" });
     const url = URL.createObjectURL(blob);
     const a = document.createElement("a");
     a.href = url;
-    a.download = `ozclu-mfa-recovery-codes.txt`;
+    a.download = `cluso-infolink-mfa-recovery-codes.txt`;
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);

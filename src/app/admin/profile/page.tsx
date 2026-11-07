@@ -34,8 +34,8 @@ export default function AdminProfilePage() {
   // Sync form states with settings from context
   useEffect(() => {
     if (settings) {
-      setCompanyName(settings.companyName || "Ozclu Private Limited");
-      setContactEmail(settings.contactEmail || "indiaops@ozclu.com");
+      setCompanyName(settings.companyName || "Cluso Infolink Private Limited");
+      setContactEmail(settings.contactEmail || "indiaops@clusoinfolink.com");
       setGstin(settings.gstin || "29AADCC1935C1ZZ");
       setCin(settings.cin || "U74140KA2007PTC042369");
       setSac(settings.sac || "U72900GJ2018PTC654321");
@@ -43,7 +43,7 @@ export default function AdminProfilePage() {
       setAddress(settings.address || "Evoma #14, Old Madras Road, Near Garden City College, Bhattarahalli, Binna Mangala, Krishnarajapuram, Bengaluru, Karnataka, 560049");
       setCity(settings.city || "Bengaluru");
       setPostalCode(settings.postalCode || "560049");
-      setInvoiceEmail(settings.invoiceEmail || "indiaops@ozclu.com");
+      setInvoiceEmail(settings.invoiceEmail || "accounts@clusoinfolink.com");
       setBillingSameAsCompany(settings.billingSameAsCompany !== undefined ? settings.billingSameAsCompany : true);
       setBillingAddress(settings.billingAddress || "Evoma #14, Old Madras Road, Near Garden City College, Bhattarahalli, Binna Mangala, Krishnarajapuram, Bengaluru, Karnataka, 560049");
     }
@@ -105,7 +105,7 @@ export default function AdminProfilePage() {
         billingSameAsCompany,
         billingAddress,
       });
-      setSuccess("Ozclu details updated successfully!");
+      setSuccess("Cluso Infolink details updated successfully!");
       setTimeout(() => setSuccess(""), 4500);
     } catch (err: any) {
       setError(err.message || "Failed to update profile settings.");
@@ -123,7 +123,7 @@ export default function AdminProfilePage() {
           <span>Admin Profile Settings</span>
         </h1>
         <p className="text-xs text-slate-500 font-semibold uppercase tracking-wider">
-          Configure Ozclu organizational details used on billable summaries and invoices.
+          Configure Cluso Infolink organizational details used on billable summaries and invoices.
         </p>
       </div>
 
@@ -216,7 +216,7 @@ export default function AdminProfilePage() {
                 type="text" 
                 value={companyName} 
                 onChange={(e) => setCompanyName(e.target.value)}
-                placeholder="e.g. Ozclu Private Limited" 
+                placeholder="e.g. Cluso Infolink Private Limited" 
                 className="w-full border border-slate-200/80 rounded-xl p-3 font-body-sm text-slate-800 bg-white focus:outline-none focus:ring-4 focus:ring-[#016e1c]/10 focus:border-[#016e1c] transition-all"
                 required
               />
@@ -227,7 +227,7 @@ export default function AdminProfilePage() {
                 type="email" 
                 value={contactEmail} 
                 onChange={(e) => setContactEmail(e.target.value)}
-                placeholder="e.g. indiaops@ozclu.com" 
+                placeholder="e.g. indiaops@clusoinfolink.com" 
                 className="w-full border border-slate-200/80 rounded-xl p-3 font-body-sm text-slate-800 bg-white focus:outline-none focus:ring-4 focus:ring-[#016e1c]/10 focus:border-[#016e1c] transition-all"
                 required
               />
@@ -343,7 +343,7 @@ export default function AdminProfilePage() {
                 type="email" 
                 value={invoiceEmail} 
                 onChange={(e) => setInvoiceEmail(e.target.value)}
-                placeholder="e.g. accounts@ozclu.com" 
+                placeholder="e.g. accounts@clusoinfolink.com" 
                 className="w-full border border-slate-200/80 rounded-xl p-3 font-body-sm text-slate-800 bg-white focus:outline-none focus:ring-4 focus:ring-[#016e1c]/10 focus:border-[#016e1c] transition-all"
               />
             </div>

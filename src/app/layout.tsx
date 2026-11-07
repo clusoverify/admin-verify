@@ -23,8 +23,8 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Verify with Ozclu — Admin Console",
-  description: "Ozclu Admin Console for managing compliance verifications, verifier accounts, and invoices.",
+  title: "Verify with Cluso Infolink — Admin Console",
+  description: "Cluso Infolink Admin Console for managing compliance verifications, verifier accounts, and invoices.",
 };
 
 export default function RootLayout({

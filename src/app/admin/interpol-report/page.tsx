@@ -275,233 +275,232 @@ function AdminInterpolReportContent() {
 
       {/* Main Report Container */}
       <div className="print-card w-full max-w-[800px] bg-white border-[6px] border-double border-[#1e3a8a] p-8 sm:p-10 shadow-lg relative my-0 mx-auto print:shadow-none print:p-8 print:max-w-full print:w-full">
-        
+
         {/* Page Block */}
         <div className="print-page-block">
           {/* Feedback Alert Banner */}
-        {feedbackMsg && (
-          <div className={`no-print print:hidden mb-6 p-4 rounded-xl text-xs font-bold flex items-center justify-between border shadow-xs animate-in fade-in ${
-            feedbackMsg.type === "success" ? "bg-emerald-50 text-emerald-800 border-emerald-200" : "bg-rose-50 text-rose-800 border-rose-200"
-          }`}>
-            <div className="flex items-center gap-2">
-              <span>{feedbackMsg.text}</span>
+          {feedbackMsg && (
+            <div className={`no-print print:hidden mb-6 p-4 rounded-xl text-xs font-bold flex items-center justify-between border shadow-xs animate-in fade-in ${feedbackMsg.type === "success" ? "bg-emerald-50 text-emerald-800 border-emerald-200" : "bg-rose-50 text-rose-800 border-rose-200"
+              }`}>
+              <div className="flex items-center gap-2">
+                <span>{feedbackMsg.text}</span>
+              </div>
+              <button onClick={() => setFeedbackMsg(null)} className="text-slate-400 hover:text-slate-600 font-bold text-sm px-2 cursor-pointer">&times;</button>
             </div>
-            <button onClick={() => setFeedbackMsg(null)} className="text-slate-400 hover:text-slate-600 font-bold text-sm px-2 cursor-pointer">&times;</button>
-          </div>
-        )}
+          )}
 
-        {/* Header */}
-        <div className="grid grid-cols-3 items-center gap-4 mb-8 border-b-2 border-slate-100 pb-6">
-          <div className="flex justify-start">
-            <div className="flex items-center gap-2">
-              {settings && settings.logo ? (
-                <div className="w-28 h-14 sm:w-36 sm:h-16 flex items-center justify-start shrink-0">
-                  <img src={settings.logo} alt="Company Logo" className="object-contain max-h-full max-w-full" />
+          {/* Header */}
+          <div className="grid grid-cols-3 items-center gap-4 mb-8 border-b-2 border-slate-100 pb-6">
+            <div className="flex justify-start">
+              <div className="flex items-center gap-2">
+                {settings && settings.logo ? (
+                  <div className="w-28 h-14 sm:w-36 sm:h-16 flex items-center justify-start shrink-0">
+                    <img src={settings.logo} alt="Company Logo" className="object-contain max-h-full max-w-full" />
+                  </div>
+                ) : (
+                  <div className="w-24 h-12 sm:w-28 sm:h-14 flex items-center justify-start shrink-0">
+                    <img src="/cluso-logo-long-default.svg" alt="Cluso Infolink Logo" className="object-contain max-h-full" />
+                  </div>
+                )}
+              </div>
+            </div>
+            <h1 className="text-center font-sans text-[#1e3a8a] text-lg sm:text-xl font-extrabold tracking-widest uppercase mt-2 leading-tight">
+              INTERPOL DATABASE<br />CHECK REPORT
+            </h1>
+            <div className="text-right text-[11px] sm:text-xs font-bold text-slate-800 space-y-0.5">
+              <div>Report #: <span className="font-mono text-slate-900">{reportNo}</span></div>
+              <div>Date: <span className="text-slate-900">{formatDate(verification.interpolCompletedAt || verification.date)}</span></div>
+            </div>
+          </div>
+
+          {/* Metadata Card */}
+          <div className="border border-slate-200 rounded-xl p-5 bg-slate-50/50 grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs font-semibold text-slate-700 mb-6">
+            <div className="space-y-1.5">
+              <div>Report Number: <span className="font-mono font-bold text-slate-900">{reportNo}</span></div>
+              <div>Request Created: <span className="text-slate-900 font-mono">{verification.date}</span></div>
+              <div>Search Status: <span className="font-bold text-emerald-600 uppercase">COMPLETED</span></div>
+            </div>
+            <div className="space-y-1.5 sm:text-right">
+              <div>Generated At: <span className="text-slate-900 font-mono">{generatedAtDate}</span></div>
+              <div>Verified By: <span className="text-slate-900 font-bold">Cluso Infolink Verify</span></div>
+              <div className="flex items-center justify-end gap-1.5 pt-1">
+                <span className="text-slate-500">Verified Through:</span>
+                <img src="/Notice-removebg-preview.png" alt="Notice Authority" className="h-6 object-contain" />
+              </div>
+            </div>
+          </div>
+
+          {/* Candidate & Request Details */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-8 border-b border-slate-100 pb-6">
+            <div>
+              <h3 className="text-xs uppercase font-extrabold tracking-wider text-[#1e3a8a] border-b border-slate-200 pb-1 mb-2">Candidate Details</h3>
+              <div className="space-y-1.5 text-xs">
+                <div><span className="text-slate-500 font-semibold">Full Name:</span> <span className="font-bold text-slate-800">{verification.name || "Suresh Kumar"}</span></div>
+                <div><span className="text-slate-500 font-semibold">Date of Birth:</span> <span className="font-semibold text-slate-800">{maskDob(verification.candidateDob || "13 Jun 2000")}</span></div>
+                <div><span className="text-slate-500 font-semibold">Place of Birth (City):</span> <span className="font-semibold text-slate-800">{verification.birthCity || "Not Provided"}</span></div>
+              </div>
+            </div>
+            <div>
+              <h3 className="text-xs uppercase font-extrabold tracking-wider text-[#1e3a8a] border-b border-slate-200 pb-1 mb-2">Request Details</h3>
+              <div className="space-y-1.5 text-xs">
+                <div><span className="text-slate-500 font-semibold">Requesting Org:</span> <span className="font-bold text-slate-800">{verification.requestingOrgName || verification.orgName}</span></div>
+                <div><span className="text-slate-500 font-semibold">Client Org:</span> <span className="font-bold text-slate-800">{verification.orgName || verification.requestingOrgName || "Cluso Infolink"}</span></div>
+              </div>
+            </div>
+          </div>
+
+          {/* Overall Verdict Card */}
+          <div className={`mb-8 p-6 border-2 rounded-xl ${verdictBg} print-avoid-break relative overflow-hidden`}>
+            <div className="flex flex-col md:flex-row items-center gap-4 justify-between">
+              <div className="space-y-2 text-center md:text-left flex-1">
+                <div className="flex items-center gap-2 justify-center md:justify-start">
+                  <span className="text-xs uppercase font-extrabold tracking-wider text-[#1e3a8a]">Status:</span>
+                  <span className={`px-3 py-0.5 rounded-full font-extrabold text-xs tracking-wide uppercase ${hasRecords ? "bg-rose-700 text-white" : "bg-emerald-700 text-white"}`}>
+                    {hasRecords ? "Failed" : "Passed"}
+                  </span>
                 </div>
-              ) : (
-                <div className="w-24 h-12 sm:w-28 sm:h-14 flex items-center justify-start shrink-0">
-                  <img src="/ozclu-logo-long-default.svg" alt="Ozclu Logo" className="object-contain max-h-full" />
+
+                <div className="text-xs font-bold text-slate-800 flex items-center gap-1.5 justify-center md:justify-start">
+                  <span>Issued by:</span>
+                  <span className="font-extrabold text-[#1e3a8a]">Cluso Infolink Verify</span>
                 </div>
-              )}
-            </div>
-          </div>
-          <h1 className="text-center font-sans text-[#1e3a8a] text-lg sm:text-xl font-extrabold tracking-widest uppercase mt-2 leading-tight">
-            INTERPOL DATABASE<br />CHECK REPORT
-          </h1>
-          <div className="text-right text-[11px] sm:text-xs font-bold text-slate-800 space-y-0.5">
-            <div>Report #: <span className="font-mono text-slate-900">{reportNo}</span></div>
-            <div>Date: <span className="text-slate-900">{formatDate(verification.interpolCompletedAt || verification.date)}</span></div>
-          </div>
-        </div>
 
-        {/* Metadata Card */}
-        <div className="border border-slate-200 rounded-xl p-5 bg-slate-50/50 grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs font-semibold text-slate-700 mb-6">
-          <div className="space-y-1.5">
-            <div>Report Number: <span className="font-mono font-bold text-slate-900">{reportNo}</span></div>
-            <div>Request Created: <span className="text-slate-900 font-mono">{verification.date}</span></div>
-            <div>Search Status: <span className="font-bold text-emerald-600 uppercase">COMPLETED</span></div>
-          </div>
-          <div className="space-y-1.5 sm:text-right">
-            <div>Generated At: <span className="text-slate-900 font-mono">{generatedAtDate}</span></div>
-            <div>Verified By: <span className="text-slate-900 font-bold">Ozclu Verify</span></div>
-            <div className="flex items-center justify-end gap-1.5 pt-1">
-              <span className="text-slate-500">Verified Through:</span>
-              <img src="/Notice-removebg-preview.png" alt="Notice Authority" className="h-6 object-contain" />
-            </div>
-          </div>
-        </div>
+                <p className="text-xs text-slate-700 font-semibold leading-relaxed max-w-[560px] mt-2 bg-white/80 p-3 rounded-lg border border-slate-200/60 shadow-2xs">
+                  {hasRecords
+                    ? "Similarity matches or notices were detected in the database check query."
+                    : "The check query matched the candidate details against records consisting of Central Bureau of Investigation (CBI) Announced Rewards lists, Interpol Red Notices, and Interpol Yellow Notices. No similarity matches or notices were detected."}
+                </p>
+              </div>
 
-        {/* Candidate & Request Details */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-8 border-b border-slate-100 pb-6">
-          <div>
-            <h3 className="text-xs uppercase font-extrabold tracking-wider text-[#1e3a8a] border-b border-slate-200 pb-1 mb-2">Candidate Details</h3>
-            <div className="space-y-1.5 text-xs">
-              <div><span className="text-slate-500 font-semibold">Full Name:</span> <span className="font-bold text-slate-800">{verification.name || "Suresh Kumar"}</span></div>
-              <div><span className="text-slate-500 font-semibold">Date of Birth:</span> <span className="font-semibold text-slate-800">{maskDob(verification.candidateDob || "13 Jun 2000")}</span></div>
-              <div><span className="text-slate-500 font-semibold">Place of Birth (City):</span> <span className="font-semibold text-slate-800">{verification.birthCity || "Not Provided"}</span></div>
+              <div className="shrink-0 flex flex-col items-center justify-center p-3 bg-white border border-slate-200 rounded-xl shadow-2xs">
+                <img src="/Notice-removebg-preview.png" alt="Notice Authority" className="h-14 object-contain" />
+                <span className="text-[9px] font-extrabold text-[#1e3a8a] uppercase tracking-wider mt-1">Verified Authority</span>
+              </div>
             </div>
           </div>
-          <div>
-            <h3 className="text-xs uppercase font-extrabold tracking-wider text-[#1e3a8a] border-b border-slate-200 pb-1 mb-2">Request Details</h3>
-            <div className="space-y-1.5 text-xs">
-              <div><span className="text-slate-500 font-semibold">Requesting Org:</span> <span className="font-bold text-slate-800">{verification.requestingOrgName || verification.orgName}</span></div>
-              <div><span className="text-slate-500 font-semibold">Client Org:</span> <span className="font-bold text-slate-800">{verification.orgName || verification.requestingOrgName || "Ozclu"}</span></div>
-            </div>
-          </div>
-        </div>
 
-        {/* Overall Verdict Card */}
-        <div className={`mb-8 p-6 border-2 rounded-xl ${verdictBg} print-avoid-break relative overflow-hidden`}>
-          <div className="flex flex-col md:flex-row items-center gap-4 justify-between">
-            <div className="space-y-2 text-center md:text-left flex-1">
-              <div className="flex items-center gap-2 justify-center md:justify-start">
-                <span className="text-xs uppercase font-extrabold tracking-wider text-[#1e3a8a]">Status:</span>
-                <span className={`px-3 py-0.5 rounded-full font-extrabold text-xs tracking-wide uppercase ${hasRecords ? "bg-rose-700 text-white" : "bg-emerald-700 text-white"}`}>
-                  {hasRecords ? "Failed" : "Passed"}
+          {hasRecords && (
+            /* Notice List Display if MATCHES FOUND */
+            <div className="space-y-6 mb-8 print-avoid-break">
+              <h3 className="text-xs uppercase font-extrabold tracking-wider text-[#1e3a8a] mb-2 flex items-center justify-between">
+                <div className="flex items-center gap-1.5">
+                  <span>Potential Database Match Details</span>
+                  <span className="px-2 py-0.5 bg-rose-100 text-rose-800 text-[10px] rounded-md font-bold">{matches.length} Record(s)</span>
+                </div>
+                <span className="no-print print:hidden text-[10px] text-rose-600 font-bold">
+                  [Admin Mode: Click &ldquo;Delete Match&rdquo; to re-evaluate false positives]
                 </span>
-              </div>
-              
-              <div className="text-xs font-bold text-slate-800 flex items-center gap-1.5 justify-center md:justify-start">
-                <span>Issued by:</span>
-                <span className="font-extrabold text-[#1e3a8a]">Ozclu Verify</span>
-              </div>
+              </h3>
 
-              <p className="text-xs text-slate-700 font-semibold leading-relaxed max-w-[560px] mt-2 bg-white/80 p-3 rounded-lg border border-slate-200/60 shadow-2xs">
-                {hasRecords
-                  ? "Similarity matches or notices were detected in the database check query."
-                  : "The check query matched the candidate details against records consisting of Central Bureau of Investigation (CBI) Announced Rewards lists, Interpol Red Notices, and Interpol Yellow Notices. No similarity matches or notices were detected."}
-              </p>
-            </div>
+              {matches.map((match: any, index: number) => {
+                const noticeTypeLabel = match.noticeType === "red_notice"
+                  ? "Interpol Red Notice"
+                  : match.noticeType === "yellow_notice"
+                    ? "Interpol Yellow Notice"
+                    : "CBI Announced Reward";
 
-            <div className="shrink-0 flex flex-col items-center justify-center p-3 bg-white border border-slate-200 rounded-xl shadow-2xs">
-              <img src="/Notice-removebg-preview.png" alt="Notice Authority" className="h-14 object-contain" />
-              <span className="text-[9px] font-extrabold text-[#1e3a8a] uppercase tracking-wider mt-1">Verified Authority</span>
-            </div>
-          </div>
-        </div>
+                const typeBadgeColor = match.noticeType === "red_notice"
+                  ? "bg-rose-100 text-rose-800 border-rose-200"
+                  : match.noticeType === "yellow_notice"
+                    ? "bg-amber-100 text-amber-800 border-amber-200"
+                    : "bg-blue-100 text-blue-800 border-blue-200";
 
-        {hasRecords && (
-          /* Notice List Display if MATCHES FOUND */
-          <div className="space-y-6 mb-8 print-avoid-break">
-            <h3 className="text-xs uppercase font-extrabold tracking-wider text-[#1e3a8a] mb-2 flex items-center justify-between">
-              <div className="flex items-center gap-1.5">
-                <span>Potential Database Match Details</span>
-                <span className="px-2 py-0.5 bg-rose-100 text-rose-800 text-[10px] rounded-md font-bold">{matches.length} Record(s)</span>
-              </div>
-              <span className="no-print print:hidden text-[10px] text-rose-600 font-bold">
-                [Admin Mode: Click &ldquo;Delete Match&rdquo; to re-evaluate false positives]
-              </span>
-            </h3>
-            
-            {matches.map((match: any, index: number) => {
-              const noticeTypeLabel = match.noticeType === "red_notice" 
-                ? "Interpol Red Notice" 
-                : match.noticeType === "yellow_notice" 
-                ? "Interpol Yellow Notice" 
-                : "CBI Announced Reward";
-
-              const typeBadgeColor = match.noticeType === "red_notice"
-                ? "bg-rose-100 text-rose-800 border-rose-200"
-                : match.noticeType === "yellow_notice"
-                ? "bg-amber-100 text-amber-800 border-amber-200"
-                : "bg-blue-100 text-blue-800 border-blue-200";
-
-              return (
-                <div key={index} className="border border-slate-200 rounded-xl overflow-hidden shadow-xs hover:shadow-sm transition-all duration-300">
-                  {/* Match Header Bar */}
-                  <div className="bg-slate-50 border-b border-slate-200 px-4 py-3 flex items-center justify-between flex-wrap gap-2">
-                    <div className="flex items-center gap-2">
-                      <span className="w-6 h-6 flex items-center justify-center bg-rose-50 border border-rose-100 rounded-lg text-xs font-bold text-rose-700">
-                        {index + 1}
-                      </span>
-                      <span className={`text-[10px] font-bold px-2 py-0.5 border rounded-lg uppercase tracking-wide ${typeBadgeColor}`}>
-                        {noticeTypeLabel}
-                      </span>
+                return (
+                  <div key={index} className="border border-slate-200 rounded-xl overflow-hidden shadow-xs hover:shadow-sm transition-all duration-300">
+                    {/* Match Header Bar */}
+                    <div className="bg-slate-50 border-b border-slate-200 px-4 py-3 flex items-center justify-between flex-wrap gap-2">
+                      <div className="flex items-center gap-2">
+                        <span className="w-6 h-6 flex items-center justify-center bg-rose-50 border border-rose-100 rounded-lg text-xs font-bold text-rose-700">
+                          {index + 1}
+                        </span>
+                        <span className={`text-[10px] font-bold px-2 py-0.5 border rounded-lg uppercase tracking-wide ${typeBadgeColor}`}>
+                          {noticeTypeLabel}
+                        </span>
+                      </div>
+                      {match.noticeId && (
+                        <span className="text-[10px] font-bold text-slate-500 font-mono">
+                          ID: {match.noticeId}
+                        </span>
+                      )}
                     </div>
-                    {match.noticeId && (
-                      <span className="text-[10px] font-bold text-slate-500 font-mono">
-                        ID: {match.noticeId}
-                      </span>
+
+                    {/* Match Details Grid */}
+                    <div className="p-4 grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs font-semibold text-slate-700">
+                      <div className="space-y-1.5">
+                        <div>Name in notice: <span className="text-slate-900 font-bold uppercase">{typeof match.name === "string" ? match.name : String(match.name || "")}</span></div>
+                        <div>Date of Birth: <span className="text-slate-900 font-mono">{typeof match.dateOfBirth === "string" ? match.dateOfBirth : String(match.dateOfBirth || "Not Specified")}</span></div>
+                        {match.placeOfBirth && typeof match.placeOfBirth === "string" && (
+                          <div>Place of Birth / Address: <span className="text-slate-900">{match.placeOfBirth}</span></div>
+                        )}
+                      </div>
+                      <div className="space-y-1.5 flex flex-col sm:flex-row gap-2 justify-between sm:items-end">
+                        <button
+                          onClick={() => {
+                            setTargetMatch({ index, match });
+                            setDeleteReason("DOB/Address mismatch upon candidate detail verification by Admin. Confirmed false positive match.");
+                            setDeleteModalOpen(true);
+                          }}
+                          className="no-print print:hidden w-fit px-3 py-1.5 bg-rose-50 hover:bg-rose-100 border border-rose-200 text-rose-700 font-bold rounded-lg transition-all cursor-pointer text-[10px] inline-flex items-center gap-1.5 shadow-xs"
+                          title="Re-evaluate and delete this potential database match"
+                        >
+                          <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                          </svg>
+                          <span>Delete Match (Re-evaluate)</span>
+                        </button>
+                        {match.link && (
+                          <button
+                            onClick={() => window.open(match.link, "_blank")}
+                            className="w-fit px-3 py-1.5 border border-slate-200 hover:bg-slate-50 text-slate-700 font-bold rounded-lg transition-all cursor-pointer text-[10px] inline-flex items-center gap-1"
+                          >
+                            <span>View Official Notice</span>
+                            <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                              <path strokeLinecap="round" strokeLinejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                            </svg>
+                          </button>
+                        )}
+                      </div>
+                    </div>
+
+                    {/* Charges Box */}
+                    {match.details?.arrest_warrants && match.details.arrest_warrants.length > 0 && (
+                      <div className="px-4 pb-4">
+                        <div className="border border-rose-100 rounded-lg bg-rose-50/20 p-3">
+                          <span className="text-[10px] font-bold text-rose-800 uppercase tracking-wider block mb-1">Arrest Warrant Charges:</span>
+                          <p className="text-xs text-rose-950 font-medium whitespace-pre-line leading-relaxed">
+                            {match.details.arrest_warrants.map((w: any) => typeof w.charge === "string" ? w.charge : JSON.stringify(w.charge || "")).join("\n")}
+                          </p>
+                        </div>
+                      </div>
+                    )}
+
+                    {match.details?.details && typeof match.details.details === "string" && match.details.details.trim() !== "" && (
+                      <div className="px-4 pb-4">
+                        <div className="border border-blue-100 rounded-lg bg-blue-50/10 p-3">
+                          <span className="text-[10px] font-bold text-blue-800 uppercase tracking-wider block mb-1">Case Details:</span>
+                          <p className="text-xs text-blue-950 font-medium leading-relaxed">
+                            {match.details.details}
+                          </p>
+                        </div>
+                      </div>
                     )}
                   </div>
+                );
+              })}
+            </div>
+          )}
 
-                  {/* Match Details Grid */}
-                  <div className="p-4 grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs font-semibold text-slate-700">
-                    <div className="space-y-1.5">
-                      <div>Name in notice: <span className="text-slate-900 font-bold uppercase">{typeof match.name === "string" ? match.name : String(match.name || "")}</span></div>
-                      <div>Date of Birth: <span className="text-slate-900 font-mono">{typeof match.dateOfBirth === "string" ? match.dateOfBirth : String(match.dateOfBirth || "Not Specified")}</span></div>
-                      {match.placeOfBirth && typeof match.placeOfBirth === "string" && (
-                        <div>Place of Birth / Address: <span className="text-slate-900">{match.placeOfBirth}</span></div>
-                      )}
-                    </div>
-                    <div className="space-y-1.5 flex flex-col sm:flex-row gap-2 justify-between sm:items-end">
-                      <button
-                        onClick={() => {
-                          setTargetMatch({ index, match });
-                          setDeleteReason("DOB/Address mismatch upon candidate detail verification by Admin. Confirmed false positive match.");
-                          setDeleteModalOpen(true);
-                        }}
-                        className="no-print print:hidden w-fit px-3 py-1.5 bg-rose-50 hover:bg-rose-100 border border-rose-200 text-rose-700 font-bold rounded-lg transition-all cursor-pointer text-[10px] inline-flex items-center gap-1.5 shadow-xs"
-                        title="Re-evaluate and delete this potential database match"
-                      >
-                        <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
-                          <path strokeLinecap="round" strokeLinejoin="round" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
-                        </svg>
-                        <span>Delete Match (Re-evaluate)</span>
-                      </button>
-                      {match.link && (
-                        <button
-                          onClick={() => window.open(match.link, "_blank")}
-                          className="w-fit px-3 py-1.5 border border-slate-200 hover:bg-slate-50 text-slate-700 font-bold rounded-lg transition-all cursor-pointer text-[10px] inline-flex items-center gap-1"
-                        >
-                          <span>View Official Notice</span>
-                          <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
-                            <path strokeLinecap="round" strokeLinejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                          </svg>
-                        </button>
-                      )}
-                    </div>
-                  </div>
-
-                  {/* Charges Box */}
-                  {match.details?.arrest_warrants && match.details.arrest_warrants.length > 0 && (
-                    <div className="px-4 pb-4">
-                      <div className="border border-rose-100 rounded-lg bg-rose-50/20 p-3">
-                        <span className="text-[10px] font-bold text-rose-800 uppercase tracking-wider block mb-1">Arrest Warrant Charges:</span>
-                        <p className="text-xs text-rose-950 font-medium whitespace-pre-line leading-relaxed">
-                          {match.details.arrest_warrants.map((w: any) => typeof w.charge === "string" ? w.charge : JSON.stringify(w.charge || "")).join("\n")}
-                        </p>
-                      </div>
-                    </div>
-                  )}
-
-                  {match.details?.details && typeof match.details.details === "string" && match.details.details.trim() !== "" && (
-                    <div className="px-4 pb-4">
-                      <div className="border border-blue-100 rounded-lg bg-blue-50/10 p-3">
-                        <span className="text-[10px] font-bold text-blue-800 uppercase tracking-wider block mb-1">Case Details:</span>
-                        <p className="text-xs text-blue-950 font-medium leading-relaxed">
-                          {match.details.details}
-                        </p>
-                      </div>
-                    </div>
-                  )}
-                </div>
-              );
-            })}
+          {/* Footer/Disclaimer */}
+          <div className="border-t border-slate-200 pt-6 mt-8 text-[9px] sm:text-[10px] text-slate-500 leading-relaxed print-avoid-break print:mt-auto">
+            <p className="font-bold uppercase tracking-wider mb-1 text-slate-700">Disclaimer & Data Limitations</p>
+            <p className="font-semibold">
+              This verification check is a database-level query matching candidate details against publicly available notifications issued by the CBI and Interpol, as compiled on July 20, 2026. This search does not constitute an active physical or biometric verification. False positives may occur due to similar name phonetics or name sequences; client discretion is advised. Clean results indicate no matching notice records were found at the time of query.
+            </p>
+            <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 mt-4 text-[9px] font-bold uppercase tracking-wider text-slate-400">
+              <div>Verification ID: {reportNo}</div>
+              <div>Powered by Cluso Infolink Integrity Network</div>
+            </div>
           </div>
-        )}
-
-        {/* Footer/Disclaimer */}
-        <div className="border-t border-slate-200 pt-6 mt-8 text-[9px] sm:text-[10px] text-slate-500 leading-relaxed print-avoid-break print:mt-auto">
-          <p className="font-bold uppercase tracking-wider mb-1 text-slate-700">Disclaimer & Data Limitations</p>
-          <p className="font-semibold">
-            This verification check is a database-level query matching candidate details against publicly available notifications issued by the CBI and Interpol, as compiled on July 20, 2026. This search does not constitute an active physical or biometric verification. False positives may occur due to similar name phonetics or name sequences; client discretion is advised. Clean results indicate no matching notice records were found at the time of query.
-          </p>
-          <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 mt-4 text-[9px] font-bold uppercase tracking-wider text-slate-400">
-            <div>Verification ID: {reportNo}</div>
-            <div>Powered by Ozclu Integrity Network</div>
-          </div>
-        </div>
 
         </div>
 

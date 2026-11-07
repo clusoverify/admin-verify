@@ -170,9 +170,9 @@ function MalaysiaCourtReportContent() {
 
         {/* Header Section */}
         <div className="p-6 sm:p-8 border-b border-slate-100 bg-gradient-to-b from-slate-50/70 to-white">
-          {/* Header Top Row: Left Ozclu logo (smaller), Middle Court logo (smaller), Right Report Number */}
+          {/* Header Top Row: Left Cluso Infolink logo (smaller), Middle Court logo (smaller), Right Report Number */}
           <div className="flex items-center justify-between gap-4 mb-6 border-b-2 border-slate-100 pb-5">
-            {/* Top Left: Ozclu Logo (smaller) */}
+            {/* Top Left: Cluso Infolink Logo (smaller) */}
             <div className="flex justify-start items-center shrink-0 w-1/3">
               <OzcluLogo size="sm" />
             </div>
@@ -223,7 +223,7 @@ function MalaysiaCourtReportContent() {
             </div>
             <div className="space-y-1.5 sm:text-right">
               <div>Generated At: <span className="text-slate-900 font-mono">{generatedAtDate} (IST)</span></div>
-              <div>Verified By: <span className="text-slate-900 font-bold">Ozclu Verify</span></div>
+              <div>Verified By: <span className="text-slate-900 font-bold">Cluso Infolink Verify</span></div>
             </div>
           </div>
         </div>
@@ -509,7 +509,7 @@ function MalaysiaCourtReportContent() {
           </div>
 
           <div className="mt-6 pt-4 border-t border-slate-200 flex items-center justify-between text-[11px] text-slate-400 print:hidden">
-            <span>Ozclu Candidate Verification Portal</span>
+            <span>Cluso Infolink Candidate Verification Portal</span>
             <div className="flex gap-3">
               <button
                 onClick={() => window.print()}

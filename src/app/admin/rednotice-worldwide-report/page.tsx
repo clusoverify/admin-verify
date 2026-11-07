@@ -287,7 +287,7 @@ function AdminRednoticeWorldwideReportContent() {
             <div className="flex justify-between items-start border-b-2 border-slate-900 pb-6 mb-6">
               <div className="flex flex-col">
                 <div className="flex items-center gap-2">
-                  <span className="text-xl font-black tracking-tight text-slate-900">OZCLU</span>
+                  <span className="text-xl font-black tracking-tight text-slate-900">CLUSO INFOLINK</span>
                   <span className="text-xs px-2 py-0.5 rounded bg-emerald-100 text-emerald-800 font-bold">VERIFIED</span>
                 </div>
                 <span className="text-[10px] text-slate-500 tracking-wider uppercase font-semibold mt-1">
@@ -394,7 +394,7 @@ function AdminRednoticeWorldwideReportContent() {
               </p>
               <div className="flex justify-between items-end mt-4 pt-2 border-t border-slate-100">
                 <div>
-                  <span className="font-bold text-slate-600 block">OZCLU VERIFICATION SERVICES</span>
+                  <span className="font-bold text-slate-600 block">CLUSO INFOLINK VERIFICATION SERVICES</span>
                   <span>Digitally Generated &amp; Cryptographically Logged Record</span>
                 </div>
                 <div className="text-right">
@@ -414,7 +414,7 @@ function AdminRednoticeWorldwideReportContent() {
               {/* Header on Page 2 */}
               <div className="flex justify-between items-start border-b-2 border-slate-900 pb-4 mb-6">
                 <div>
-                  <span className="text-lg font-black text-slate-900">OZCLU VERIFIED</span>
+                  <span className="text-lg font-black text-slate-900">CLUSO INFOLINK VERIFIED</span>
                   <span className="text-[10px] text-slate-500 tracking-wider uppercase font-semibold block mt-1">
                     Red Notice Worldwide Matching Records
                   </span>
@@ -533,7 +533,7 @@ function AdminRednoticeWorldwideReportContent() {
 
             {/* Footer on Page 2 */}
             <div className="mt-8 pt-4 border-t border-slate-200 text-[10px] text-slate-400 flex justify-between items-center">
-              <span>OZCLU VERIFICATION SERVICES &bull; CONFIDENTIAL &amp; PROPRIETARY</span>
+              <span>CLUSO INFOLINK VERIFICATION SERVICES &bull; CONFIDENTIAL &amp; PROPRIETARY</span>
               <span className="font-mono">Ref: {reportNo} (Page 2)</span>
             </div>
           </div>

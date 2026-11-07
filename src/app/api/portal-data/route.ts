@@ -256,7 +256,7 @@ export async function POST(req: NextRequest) {
         };
 
         // Build the direct login URL (with email and password query parameters)
-        const candidatePortalUrl = process.env.CANDIDATE_PORTAL_URL || "https://candidate.verify.ozclu.in";
+        const candidatePortalUrl = process.env.CANDIDATE_PORTAL_URL || "https://candidate.verify.clusoinfolink.com";
         const setupUrl = `${candidatePortalUrl}/?email=${encodeURIComponent(email.toLowerCase().trim())}&password=${encodeURIComponent(tempPassword)}`;
 
         await db.collection("verifications").insertOne({
@@ -1563,7 +1563,7 @@ export async function POST(req: NextRequest) {
         });
 
         // Fire and forget the eCourts search on the client portal
-        const clientPortalUrl = process.env.CLIENT_PORTAL_URL || "https://verify.ozclu.com";
+        const clientPortalUrl = process.env.CLIENT_PORTAL_URL || "https://verify.clusoinfolink.com";
         const searchUrl = `${clientPortalUrl}/api/ecourts-search`;
         const internalSecret = process.env.NEXTAUTH_SECRET || "";
 

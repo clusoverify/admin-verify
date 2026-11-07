@@ -264,7 +264,7 @@ function UkCourtReportContent() {
                   </div>
                 ) : (
                   <div className="h-8 sm:h-9 flex items-center justify-start mb-2.5">
-                    <img src="/ozclu-logo-long-default.svg" alt="Ozclu Logo" className="h-7 sm:h-8 w-auto object-contain" />
+                    <img src="/cluso-logo-long-default.svg" alt="Cluso Infolink Logo" className="h-7 sm:h-8 w-auto object-contain" />
                   </div>
                 )}
 
@@ -303,7 +303,7 @@ function UkCourtReportContent() {
               </div>
               <div className="space-y-1.5 sm:text-right">
                 <div>Generated At: <span className="text-slate-900 font-mono">{generatedAtDate} (IST)</span></div>
-                <div>Verified By: <span className="text-slate-900 font-bold">Ozclu Verify</span></div>
+                <div>Verified By: <span className="text-slate-900 font-bold">Cluso Infolink Verify</span></div>
               </div>
             </div>
 
@@ -332,7 +332,7 @@ function UkCourtReportContent() {
                 </div>
                 <div className="space-y-1">
                   <div><span className="text-slate-500 font-semibold">Requesting Org:</span> <span className="font-bold text-slate-800">{verification.requestingOrgName || verification.orgName}</span></div>
-                  <div><span className="text-slate-500 font-semibold">Client Org:</span> <span className="font-bold text-slate-800">{verification.orgName || verification.requestingOrgName || "Ozclu"}</span></div>
+                  <div><span className="text-slate-500 font-semibold">Client Org:</span> <span className="font-bold text-slate-800">{verification.orgName || verification.requestingOrgName || "Cluso Infolink"}</span></div>
                   <div><span className="text-slate-500 font-semibold">Jurisdiction:</span> <span className="font-bold text-slate-800">England &amp; Wales (Judiciary UK)</span></div>
                   {verification.idProofType && verification.idProofType !== "Not Given" && verification.idProofType !== "Not Provided" && (
                     <div><span className="text-slate-500 font-semibold">ID Type:</span> <span className="font-semibold text-slate-800">{verification.idProofType}</span></div>
@@ -506,7 +506,7 @@ function UkCourtReportContent() {
             </p>
             <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-1.5 mt-3 text-[9px] font-bold uppercase tracking-wider text-slate-400">
               <div>Verification ID: {reportNo}</div>
-              <div>Powered by Ozclu Integrity Network</div>
+              <div>Powered by Cluso Infolink Integrity Network</div>
             </div>
           </div>
 

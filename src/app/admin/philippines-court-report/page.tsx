@@ -120,9 +120,9 @@ function PhilippinesCourtReportContent() {
 
   const generatedAtDate = verification.philippinesCourtCompletedAt
     ? new Date(verification.philippinesCourtCompletedAt).toLocaleString("en-IN", {
-        timeZone: "Asia/Kolkata",
-        hour12: true,
-      }).replace(/\u202f/g, " ").toLowerCase()
+      timeZone: "Asia/Kolkata",
+      hour12: true,
+    }).replace(/\u202f/g, " ").toLowerCase()
     : new Date().toLocaleString("en-IN", { timeZone: "Asia/Kolkata", hour12: true }).replace(/\u202f/g, " ").toLowerCase();
 
   const candidateName = verification.name || verification.philippinesCourtPartyName || "";
@@ -131,8 +131,8 @@ function PhilippinesCourtReportContent() {
   const results = isCaseNoSearch
     ? rawResults
     : rawResults.filter((rec: any) =>
-        isRecordFullNameMatch(candidateName, [rec.caseTitle, rec.parties])
-      );
+      isRecordFullNameMatch(candidateName, [rec.caseTitle, rec.parties])
+    );
   const hasRecords = results.length > 0;
   const totalFound = results.length;
 
@@ -140,10 +140,10 @@ function PhilippinesCourtReportContent() {
     verification.philippinesCourtStation === "mnl"
       ? "Court of Appeals Manila Station"
       : verification.philippinesCourtStation === "ceb"
-      ? "Court of Appeals Visayas Station (Cebu City)"
-      : verification.philippinesCourtStation === "cdo"
-      ? "Court of Appeals Mindanao Station (Cagayan de Oro)"
-      : "All Court of Appeals Stations (Manila, Visayas, Mindanao)";
+        ? "Court of Appeals Visayas Station (Cebu City)"
+        : verification.philippinesCourtStation === "cdo"
+          ? "Court of Appeals Mindanao Station (Cagayan de Oro)"
+          : "All Court of Appeals Stations (Manila, Visayas, Mindanao)";
 
   return (
     <div className="min-h-screen bg-slate-50 p-4 sm:p-8 font-sans text-slate-800 print:bg-white print:p-0">
@@ -160,11 +160,11 @@ function PhilippinesCourtReportContent() {
           <div className="relative z-10">
             {/* Top row: Logo left (smaller), Court Logo middle (smaller), Report Number right */}
             <div className="flex items-center justify-between gap-4 mb-6 border-b border-white/20 pb-5">
-              {/* Top Left: Ozclu Logo (smaller) */}
+              {/* Top Left: Cluso Infolink Logo (smaller) */}
               <div className="flex justify-start items-center shrink-0 w-1/3">
-                <img src="/ozclu-logo-long-default.svg" alt="Ozclu Logo" className="h-8 sm:h-9 w-auto object-contain brightness-0 invert opacity-90" />
+                <img src="/cluso-logo-long-default.svg" alt="Cluso Infolink Logo" className="h-8 sm:h-9 w-auto object-contain brightness-0 invert opacity-90" />
               </div>
-              
+
               {/* Top Middle: Court Logo (20% larger) */}
               <div className="flex justify-center items-center w-1/3 text-center">
                 <div className="bg-white/10 p-2 rounded-xl backdrop-blur-md border border-white/20 inline-flex items-center justify-center">
@@ -206,7 +206,7 @@ function PhilippinesCourtReportContent() {
               </div>
               <div className="space-y-1.5 sm:text-right">
                 <div>Generated At: <span className="text-white font-mono">{generatedAtDate} (IST)</span></div>
-                <div>Verified By: <span className="text-white font-bold">Ozclu Verify</span></div>
+                <div>Verified By: <span className="text-white font-bold">Cluso Infolink Verify</span></div>
               </div>
             </div>
           </div>
@@ -215,17 +215,15 @@ function PhilippinesCourtReportContent() {
         {/* Verification Summary Banner */}
         <div className="px-8 py-6 border-b border-slate-200">
           <div
-            className={`flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-5 rounded-2xl border ${
-              hasRecords
+            className={`flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-5 rounded-2xl border ${hasRecords
                 ? "bg-amber-50 border-amber-300 text-amber-950"
                 : "bg-emerald-50 border-emerald-200 text-emerald-950"
-            }`}
+              }`}
           >
             <div className="flex items-center gap-3.5">
               <div
-                className={`w-12 h-12 rounded-xl flex items-center justify-center shrink-0 ${
-                  hasRecords ? "bg-amber-600 text-white shadow-md shadow-amber-600/20" : "bg-emerald-600 text-white shadow-md shadow-emerald-600/20"
-                }`}
+                className={`w-12 h-12 rounded-xl flex items-center justify-center shrink-0 ${hasRecords ? "bg-amber-600 text-white shadow-md shadow-amber-600/20" : "bg-emerald-600 text-white shadow-md shadow-emerald-600/20"
+                  }`}
               >
                 {hasRecords ? (
                   <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -256,11 +254,10 @@ function PhilippinesCourtReportContent() {
 
             <div className="flex items-center gap-2 self-start sm:self-auto shrink-0">
               <span
-                className={`px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wide border ${
-                  hasRecords
+                className={`px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wide border ${hasRecords
                     ? "bg-amber-100 text-amber-900 border-amber-300"
                     : "bg-emerald-100 text-emerald-800 border-emerald-300"
-                }`}
+                  }`}
               >
                 {hasRecords ? "Adverse Record Identified" : "VERIFIED CLEAR"}
               </span>
@@ -384,11 +381,10 @@ function PhilippinesCourtReportContent() {
 
                     <div className="flex items-center gap-2">
                       <span
-                        className={`px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wide border ${
-                          rec.hasDecision
+                        className={`px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wide border ${rec.hasDecision
                             ? "bg-emerald-50 text-emerald-800 border-emerald-300"
                             : "bg-amber-50 text-amber-800 border-amber-300"
-                        }`}
+                          }`}
                       >
                         {rec.decisionStatus}
                       </span>
@@ -440,7 +436,7 @@ function PhilippinesCourtReportContent() {
           <div className="flex flex-col sm:flex-row items-center justify-between gap-4 mt-6 pt-6 border-t border-slate-200">
             <div className="flex items-center gap-2">
               <span className="w-2 h-2 rounded-full bg-emerald-500"></span>
-              <span className="font-semibold text-slate-600">Digital Audit Trail Verified • Ozclu Verify Platform</span>
+              <span className="font-semibold text-slate-600">Digital Audit Trail Verified • Cluso Infolink Verify Platform</span>
             </div>
             <div className="flex items-center gap-3 print:hidden">
               <button

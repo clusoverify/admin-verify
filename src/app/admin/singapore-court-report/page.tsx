@@ -187,7 +187,7 @@ function SingaporeCourtReportContent() {
             </div>
             <div className="space-y-1.5 sm:text-right">
               <div>Generated At: <span className="text-slate-900 font-mono">{generatedAtDate} (IST)</span></div>
-              <div>Verified By: <span className="text-slate-900 font-bold">Ozclu Verify</span></div>
+              <div>Verified By: <span className="text-slate-900 font-bold">Cluso Infolink Verify</span></div>
             </div>
           </div>
         </div>
@@ -470,7 +470,7 @@ function SingaporeCourtReportContent() {
           <div className="flex flex-col sm:flex-row items-center justify-between gap-4 mt-6 pt-6 border-t border-slate-200">
             <div className="flex items-center gap-2">
               <span className="w-2 h-2 rounded-full bg-emerald-500"></span>
-              <span className="font-semibold text-slate-600">Digital Audit Trail Verified • Ozclu Verify Platform</span>
+              <span className="font-semibold text-slate-600">Digital Audit Trail Verified • Cluso Infolink Verify Platform</span>
             </div>
             <div className="flex items-center gap-3 print:hidden">
               <button
